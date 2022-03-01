@@ -1,79 +1,83 @@
+// material
+import { Box, Card, Link, Stack, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import { Link as RouterLink } from 'react-router-dom';
-// material
-import { Box, Card, Link, Typography, Stack } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { getCartItems, removeCartItems, setCartItems } from 'src/utils/sessionStorage';
 // utils
 import { fCurrency } from '../../../utils/formatNumber';
-//
-import Label from '../../Label';
-import ColorPreview from '../../ColorPreview';
 
 // ----------------------------------------------------------------------
 
+const urlImage = 'https://localhost:44349/uploads/';
 const ProductImgStyle = styled('img')({
-  top: 0,
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
-  position: 'absolute'
+    top: 0,
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    position: 'absolute'
 });
 
 // ----------------------------------------------------------------------
 
 ShopProductCard.propTypes = {
-  product: PropTypes.object
+    product: PropTypes.object
 };
 
-export default function ShopProductCard({ product }) {
-  const { name, cover, price, colors, status, priceSale } = product;
+export default function ShopProductCard({ items }) {
+    const { name, price, priceSale, id } = items.product;
+    const imageSrc = urlImage + items.image;
 
-  return (
-    <Card>
-      <Box sx={{ pt: '100%', position: 'relative' }}>
-        {status && (
-          <Label
-            variant="filled"
-            color={(status === 'sale' && 'error') || 'info'}
-            sx={{
-              zIndex: 9,
-              top: 16,
-              right: 16,
-              position: 'absolute',
-              textTransform: 'uppercase'
-            }}
-          >
-            {status}
-          </Label>
-        )}
-        <ProductImgStyle alt={name} src={cover} />
-      </Box>
+    const handleAddToCart = () => {
+        const cartItems = getCartItems();
+        let indexItemInCart = cartItems.findIndex((item) => item.id === id);
 
-      <Stack spacing={2} sx={{ p: 3 }}>
-        <Link to="#" color="inherit" underline="hover" component={RouterLink}>
-          <Typography variant="subtitle2" noWrap>
-            {name}
-          </Typography>
-        </Link>
+        if (indexItemInCart > -1) {
+            cartItems.splice(indexItemInCart, 1, {
+                id,
+                amount: cartItems[indexItemInCart].amount + 1
+            });
+        } else {
+            cartItems.push({ id, amount: 1 });
+        }
 
-        <Stack direction="row" alignItems="center" justifyContent="space-between">
-          <ColorPreview colors={colors} />
-          <Typography variant="subtitle1">
-            <Typography
-              component="span"
-              variant="body1"
-              sx={{
-                color: 'text.disabled',
-                textDecoration: 'line-through'
-              }}
-            >
-              {priceSale && fCurrency(priceSale)}
-            </Typography>
-            &nbsp;
-            {fCurrency(price)}
-          </Typography>
-        </Stack>
-      </Stack>
-    </Card>
-  );
+        removeCartItems();
+        setCartItems(cartItems);
+    };
+
+    return (
+        <Card>
+            <Box sx={{ pt: '100%', position: 'relative' }}>
+                <ProductImgStyle alt={name} src={imageSrc} />
+            </Box>
+
+            <Stack spacing={2} sx={{ p: 3 }}>
+                <Link to="#" color="inherit" underline="hover" component={RouterLink}>
+                    <Typography variant="subtitle2" noWrap onClick={handleAddToCart}>
+                        {name}
+                    </Typography>
+                </Link>
+
+                <Stack direction="row" alignItems="center" justifyContent="space-between">
+                    <Typography variant="subtitle1">
+                        Price:
+                        <Typography
+                            component="span"
+                            variant="body1"
+                            sx={{
+                                color: 'text.disabled',
+                                textDecoration: 'line-through',
+                                marginLeft: '20px'
+                            }}
+                        >
+                            {priceSale && fCurrency(price)}
+                        </Typography>
+                        &nbsp;
+                        {priceSale ? fCurrency(priceSale) : fCurrency(price)}
+                    </Typography>
+                </Stack>
+                <i className="bi bi-cart2"></i>
+            </Stack>
+        </Card>
+    );
 }
