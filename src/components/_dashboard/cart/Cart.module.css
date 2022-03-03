@@ -1,0 +1,209 @@
+.table-cart {
+    border-color: #eee;
+    border-bottom: 1px solid #eee;
+}
+.table-cart th {
+    font-size: 14px;
+    color: #333;
+    text-align: left;
+    font-weight: 400;
+    border-color: #eee;
+    padding: 10px 0;
+}
+.table-cart tr {
+    border-color: #eee;
+}
+.table-cart td {
+    font-size: 16px;
+    color: #1c1c1c;
+    text-align: left;
+    vertical-align: middle;
+    padding: 10px 0;
+    border-color: #eee;
+}
+.table-cart td .thumb-cart img {
+    width: 150px;
+    margin-right: 15px;
+    float: left;
+}
+img {
+    max-width: 100%;
+}
+.table-cart td .thumb-cart h4 {
+    font-size: 16px;
+    color: #000;
+    text-align: left;
+    margin: 0;
+    padding-top: 30px;
+    margin-bottom: 10px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'SVN-Gotham', sans-serif;
+    font-weight: 500;
+    color: #000000;
+    margin-top: 0px;
+    font-weight: 400;
+    line-height: 1;
+}
+.table-cart td .thumb-cart span {
+    font-size: 16px;
+    color: #000;
+    text-align: left;
+}
+.table-cart td .thumb-cart:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.qty-number {
+    border-radius: 50px;
+    overflow: hidden;
+    display: inline-block;
+    border: 1px solid #eee;
+}
+.qty-number input[type="button"] {
+    width: 40px;
+    border: 0;
+}
+.qty-number input {
+    border: 0;
+    border-left: 1px solid #eee;
+    outline: none;
+    height: 50px;
+    text-align: center;
+    width: 60px;
+    float: left;
+    border-right: 1px solid #eee;
+    background: #fff;
+}
+a, button, input {
+    outline: medium none;
+    color: #434343;
+}
+.qty-number:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.table.table-cart td b {
+    font-size: 16px;
+    color: #1c1c1c;
+    font-weight: 400;
+}
+.table-cart td span.remove-item {
+    font-size: 16px;
+    color: #000;
+    text-align: left;
+}
+.button-action {
+    padding: 20px 0;
+}
+.button-action span {
+    display: inline-block;
+    border: 0;
+    background: #000000;
+    height: 50px;
+    padding: 0 40px;
+    border-radius: 50px;
+    font-size: 16px;
+    text-decoration: none;
+    line-height: 50px;
+    transition: all .3s;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+.button-action span:hover{
+    cursor: pointer;
+}
+.button-action:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.calculate-area {
+    width: 100%;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+.calculate-area .ct-ft-cart {
+    width: 100%;
+    margin-bottom: 30px;
+}
+.calculate-area .total-cart {
+    border: 1px solid #eee;
+    padding-top: 0px;
+    margin-bottom: 20px;
+}
+.calculate-area .total-cart .subtotal {
+    width: 100%;
+    color: #787878;
+    font-size: 16px;
+    padding: 10px 25px;
+}
+.calculate-area .total-cart .subtotal b {
+    float: right;
+}
+.calculate-area .total-cart .final-total {
+    background: #fafafa;
+    color: #333;
+    font-size: 16px;
+    padding: 25px;
+    border-top: 1px solid #eee;
+}
+.calculate-area .ct-ft-cart .update-cart {
+    display: inline-block;
+    border: 1px solid transparent;
+    border-color: #000000;
+    background: #000000;
+    height: 45px;
+    padding: 0 30px;
+    border-radius: 50px;
+    font-size: 14px;
+    line-height: 45px;
+    transition: all .3s;
+    text-decoration: none;
+    color: #333;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: #fff;
+}
+.calculate-area .ct-ft-cart .update-cart:hover {
+    cursor: pointer;
+}
+.calculate-area .total-cart .final-total:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.note-item .control-label {
+    font-weight: normal;
+    font-size: 15px;
+}
+label {
+    font-size: 15px;
+    font-weight: 400;
+    color: #626262;
+}
+.note-item textarea {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #555555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.calculate-area .ct-ft-cart:after {
+    content: '';
+    display: table;
+    clear: both;
+}
